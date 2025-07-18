@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swastayan Roy - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: color 0.3s ease-in-out;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #3B82F6; /* blue-500 */
+        }
+        section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        section.active {
+            display: flex;
+            opacity: 1;
+        }
+        .prose { 
+            line-height: 1.75;
+            color: #D1D5DB;
+        }
+        .prose h3 {
+            color: #F9FAFB;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+        }
+        .prose ul {
+            list-style-position: inside;
+            list-style-type: disc;
+        }
+        .prose p, .prose ul {
+            margin-bottom: 1em;
+        }
+        .prose a {
+            color: #60A5FA;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 flex flex-col h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/20 h-24 flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-white nav-link" data-section="home">Swastayan Roy</a>
+                <nav class="hidden md:flex space-x-8 text-gray-300">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                    <a href="#blog" class="nav-link" data-section="blog">Blog</a>
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800">
+            <a href="#home" class="block py-3 px-6 text-sm nav-link active" data-section="home">Home</a>
+            <a href="#projects" class="block py-3 px-6 text-sm nav-link" data-section="projects">Projects</a>
+            <a href="#blog" class="block py-3 px-6 text-sm nav-link" data-section="blog">Blog</a>
+            <a href="#about" class="block py-3 px-6 text-sm nav-link" data-section="about">About</a>
+            <a href="#contact" class="block py-3 px-6 text-sm nav-link" data-section="contact">Contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow overflow-y-auto pt-24 scroll-smooth">
+        <!-- Home Section -->
+        <section id="home" class="active container mx-auto px-6 min-h-full items-center">
+            <div class="text-center w-full">
+                <img src="img2.jpg" alt="Swastayan Roy" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 shadow-lg border-4 border-gray-700">
+                <h1 class="text-4xl md:text-6xl font-bold text-white">Hi, I'm Swastayan Roy</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">An engineering physics student driven by a deep passion for finance, technology, and strategy. I explore the intersection of markets and machine intelligence, sharing my projects, insights, and learnings from years of diving into everything from stock trading systems to web development.</p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="#projects" class="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition-shadow nav-link" data-section="projects">View My Work</a>
+                    <a href="#contact" class="bg-gray-700 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:bg-gray-600 transition-colors nav-link" data-section="contact">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container mx-auto px-6 min-h-full flex-col justify-center py-12">
+            <div class="w-full">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">My Projects</h2>
+                <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Projects will be loaded here from Firebase -->
+                    <p class="text-gray-400 col-span-full text-center">Loading projects...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Single Project Detail Section -->
+        <section id="project-detail" class="container mx-auto px-6 min-h-full flex-col justify-center py-12">
+            <div id="project-detail-content-wrapper" class="max-w-4xl mx-auto w-full">
+                <!-- Project detail will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="container mx-auto px-6 min-h-full flex-col justify-center py-12">
+             <div class="w-full">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">From My Blog</h2>
+                <div id="blog-list" class="space-y-8 max-w-4xl mx-auto">
+                    <!-- Blog posts will be loaded here from Firebase -->
+                    <p class="text-gray-400 text-center">Loading blog posts...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Blog Post Section -->
+        <section id="blog-post" class="container mx-auto px-6 min-h-full flex-col justify-center py-12">
+            <div id="blog-post-content-wrapper" class="max-w-4xl mx-auto w-full">
+                <!-- Blog post detail will be loaded here -->
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="container mx-auto px-6 min-h-full items-center">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                <img src="https://placehold.co/400x400/1F2937/FFFFFF?text=SR" onerror="this.onerror=null;this.src='https://placehold.co/400x400/374151/FFFFFF?text=Image+Error';" alt="Swastayan Roy" class="w-48 h-48 md:w-64 md:h-64 rounded-lg shadow-xl object-cover">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">About Me</h2>
+                    <div class="text-gray-400 mb-4 space-y-4">
+                        <p>
+                            Hello! I'm Swastayan,an engineering undergraduate on a quest to master the powerful spells of business, finance, and technology. Fueled by curiosity and driven by a hunger for learning, I delve into books, news, and magazines, constantly seeking inspiration and knowledge. I bring my ideas to life through hands-on personal projects, where I explore the intersection of innovation, problem-solving, and impact.
+                        </p>
+                        <p>
+                            With a strong analytical foundation from my engineering studies, I’m learning to turn complex challenges into opportunities. My passion lies in understanding how technology drives growth and how financial strategies create meaningful solutions.
+                        </p>
+                        <p>
+                            Whether it’s uncovering the next big trend, decoding the intricacies of a business model, or building tools that solve real-world problems, I thrive on connecting the dots between ideas and execution.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 pl-2">
+                            <li>Always eager to learn something new.</li>
+                            <li>Open to collaboration with like-minded innovators.</li>
+                            <li>On a journey to create transformative solutions that shape a better future.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto px-6 min-h-full flex-col justify-center py-12">
+            <div class="max-w-2xl mx-auto text-center w-full">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Get In Touch</h2>
+                <p class="text-gray-400 mb-8">Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to discussing new opportunities and creative ideas.</p>
+                <form id="contact-form" class="bg-gray-800 p-8 rounded-lg shadow-lg text-left">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-300 font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-300 font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-300 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition-shadow">Send Message</button>
+                </form>
+                <div id="form-status" class="mt-4 text-center"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 Swastayan Roy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, getDocs, doc, getDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Firebase Configuration ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyBc82bqZGXg88KHdP6r2et4hzTrmW5mRBc",
+            authDomain: "portfolio-website-12c29.firebaseapp.com",
+            projectId: "portfolio-website-12c29",
+            storageBucket: "portfolio-website-12c29.appspot.com",
+            messagingSenderId: "1065379064080",
+            appId: "1:1065379064080:web:76b651d877feea0605dd95",
+            measurementId: "G-6EE91S342L"
+        };
+        // The appId below is a different concept, related to the platform this code runs on.
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // --- DOM Elements ---
+        const mainContent = document.querySelector('main');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // --- Firebase Data Fetching ---
+        async function fetchCollection(collectionName) {
+            try {
+                // Corrected path to match the security rules
+                const collectionPath = `/artifacts/${appId}/public/data/${collectionName}`;
+                const q = query(collection(db, collectionPath), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                const items = [];
+                querySnapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() });
+                });
+                return items;
+            } catch (error) {
+                console.error(`Error fetching ${collectionName}: `, error);
+                return [];
+            }
+        }
+
+        async function fetchDocument(collectionName, docId) {
+            try {
+                // Corrected path to match the security rules
+                const docPath = `/artifacts/${appId}/public/data/${collectionName}/${docId}`;
+                const docRef = doc(db, docPath);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    return { id: docSnap.id, ...docSnap.data() };
+                } else {
+                    console.log("No such document!");
+                    return null;
+                }
+            } catch (error)
+                 {
+                console.error(`Error fetching document ${docId}: `, error);
+                return null;
+            }
+        }
+
+        // --- UI Rendering ---
+        function renderProjects(projects) {
+            const container = document.getElementById('project-list');
+            if (projects.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 col-span-full text-center">No projects found. Add some in your Firebase console!</p>';
+                return;
+            }
+            container.innerHTML = projects.map(p => `
+                <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                    <img src="${p.imageUrl || 'https://placehold.co/600x400/374151/FFFFFF?text=Project'}" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/FFFFFF?text=Image+Error';" alt="${p.title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">${p.title}</h3>
+                        <p class="text-gray-400 mb-4">${p.summary}</p>
+                        <a href="#project-detail" class="text-blue-400 hover:underline view-details" data-id="${p.id}">View Details &rarr;</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderBlogs(blogs) {
+            const container = document.getElementById('blog-list');
+            if (blogs.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-center">No blog posts found. Add some in your Firebase console!</p>';
+                return;
+            }
+            container.innerHTML = blogs.map(b => `
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-blue-500/20 transition-shadow duration-300">
+                    <p class="text-sm text-gray-500 mb-1">${b.date}</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">${b.title}</h3>
+                    <p class="text-gray-400 mb-4">${b.summary}</p>
+                    <a href="#blog-post" class="text-blue-400 hover:underline read-more" data-id="${b.id}">Read More &rarr;</a>
+                </div>
+            `).join('');
+        }
+        
+        function renderProjectDetail(project) {
+            const container = document.getElementById('project-detail-content-wrapper');
+            if (!project) {
+                container.innerHTML = `<p class="text-center text-red-400">Could not load project.</p>`;
+                return;
+            }
+            container.innerHTML = `
+                <a href="#projects" class="nav-link text-blue-400 hover:underline mb-8 inline-block" data-section="projects">&larr; Back to Projects</a>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">${project.title}</h2>
+                <img src="${project.imageUrl || 'https://placehold.co/800x500/374151/FFFFFF?text=Project'}" alt="${project.title}" class="w-full h-auto rounded-lg shadow-lg mb-8">
+                <div class="prose max-w-none leading-relaxed">${project.content}</div>
+            `;
+        }
+        
+        function renderBlogPostDetail(post) {
+             const container = document.getElementById('blog-post-content-wrapper');
+             if (!post) {
+                container.innerHTML = `<p class="text-center text-red-400">Could not load post.</p>`;
+                return;
+            }
+            container.innerHTML = `
+                <a href="#blog" class="nav-link text-blue-400 hover:underline mb-8 inline-block" data-section="blog">&larr; Back to Blog</a>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2 text-white">${post.title}</h2>
+                <p class="text-sm text-gray-500 mb-8">${post.date}</p>
+                <div class="prose max-w-none leading-relaxed">${post.content}</div>
+            `;
+        }
+
+        // --- Navigation Logic ---
+        function showSection(id) {
+            sections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === id) section.classList.add('active');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const sectionType = link.dataset.section;
+                if (sectionType === id || (sectionType === 'blog' && id === 'blog-post') || (sectionType === 'projects' && id === 'project-detail')) {
+                    link.classList.add('active');
+                }
+            });
+            mainContent.scrollTo(0, 0);
+        }
+        
+        // --- Event Listeners ---
+        function attachNavListeners() {
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.dataset.section;
+                    showSection(sectionId);
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+
+        function attachContentListeners() {
+            mainContent.addEventListener('click', async (e) => {
+                if (e.target.matches('.view-details')) {
+                    e.preventDefault();
+                    const projectId = e.target.dataset.id;
+                    const project = await fetchDocument('projects', projectId);
+                    renderProjectDetail(project);
+                    showSection('project-detail');
+                }
+                if (e.target.matches('.read-more')) {
+                    e.preventDefault();
+                    const postId = e.target.dataset.id;
+                    const post = await fetchDocument('blogs', postId);
+                    renderBlogPostDetail(post);
+                    showSection('blog-post');
+                }
+            });
+        }
+        
+        // --- Contact Form ---
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formStatus = document.getElementById('form-status');
+            formStatus.textContent = 'Sending...';
+            formStatus.className = 'text-blue-400';
+            setTimeout(() => {
+                formStatus.textContent = 'Thank you for your message!';
+                formStatus.className = 'text-green-400';
+                contactForm.reset();
+                setTimeout(() => { formStatus.textContent = ''; }, 5000);
+            }, 1500);
+        });
+
+        // --- Initial Load ---
+        async function initialize() {
+            try {
+                try {
+                    await signInAnonymously(auth);
+                    console.log("Signed in anonymously successfully.");
+                } catch (authError) {
+                    console.warn("Anonymous sign-in failed. This can happen if the Authentication provider is not enabled in Firebase.", authError);
+                    console.log("Proceeding with public data access, which should work if rules are set correctly.");
+                }
+
+                const [projects, blogs] = await Promise.all([
+                    fetchCollection('projects'),
+                    fetchCollection('blogs')
+                ]);
+                
+                renderProjects(projects);
+                renderBlogs(blogs);
+                
+                attachNavListeners();
+                attachContentListeners();
+
+                const initialSection = window.location.hash.substring(1) || 'home';
+                showSection(initialSection);
+
+            } catch (error) {
+                console.error("Data fetching or rendering failed: ", error);
+                document.getElementById('project-list').innerHTML = `<p class="text-red-400 col-span-full text-center">Could not load projects. Please check your Firestore database and security rules.</p>`;
+                document.getElementById('blog-list').innerHTML = `<p class="text-red-400 text-center">Could not load blogs.</p>`;
+            }
+        }
+
+        initialize();
+    </script>
+</body>
+</html>
