@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swastayan Roy — Quant Developer</title>
+  <meta name="description" content="Swastayan Roy — developer building quantitative trading and risk tools: regime models, volatility, honest backtests, and the occasional black hole." />
+  <meta name="theme-color" content="#05060a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Atmosphere -->
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="haze" aria-hidden="true"><span class="h1"></span><span class="h2"></span><span class="h3"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <filter id="ripple">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="4" result="n">
+        <animate attributeName="baseFrequency" dur="9s" values="0.012 0.09;0.016 0.12;0.012 0.09" repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="18" />
+    </filter>
+  </svg>
+
+  <!-- Navigation: styled as a transit line -->
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Swastayan Roy, home">
+      <span class="brand-badge">S</span>
+      <span class="brand-name">SWASTAYAN ROY<small>スワスタヤン・ロイ</small></span>
+    </a>
+    <nav class="line" aria-label="Primary">
+      <a href="#work"><i class="dot c"></i><span>Work<em>作品</em></span></a>
+      <a href="#manifesto"><i class="dot m"></i><span>Approach<em>方法</em></span></a>
+      <a href="#journey"><i class="dot a"></i><span>Journey<em>経歴</em></span></a>
+      <a href="#repos"><i class="dot c"></i><span>Repos<em>路線図</em></span></a>
+      <a href="#contact"><i class="dot w"></i><span>Contact<em>連絡</em></span></a>
+    </nav>
+    <div class="clock mono" title="National Stock Exchange of India, regular session 09:15–15:30 IST">
+      <span class="live" id="mkt-dot"></span><span id="mkt">NSE</span><span id="clock">--:--</span>&nbsp;IST
+    </div>
+  </header>
+
+  <!-- Drive HUD -->
+  <aside class="hud mono" aria-hidden="true">
+    <div class="speed"><span id="speed">000</span><small>KM/H</small></div>
+    <div class="lane"><span id="lane-fill"></span></div>
+    <div class="odo"><span id="odo">0.0</span> KM</div>
+  </aside>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-meta mono reveal">
+        <span>QUANT DEVELOPER</span><span class="sep">/</span><span lang="ja">クオンツ開発</span><span class="sep">/</span><span>PROP FUTURES TRADER</span><span class="sep">/</span><span>NIT AGARTALA</span>
+      </div>
+
+      <div class="hero-title">
+        <h1 class="chrome">
+          <span class="row">SWASTAYAN</span>
+          <span class="row">ROY</span>
+        </h1>
+        <div class="reflection" aria-hidden="true">
+          <span class="row">SWASTAYAN</span>
+          <span class="row">ROY</span>
+        </div>
+      </div>
+
+      <p class="vertical-jp" lang="ja" aria-hidden="true">夜の市場を、数式で。</p>
+
+      <div class="hero-foot">
+        <p class="lede reveal">
+          Proprietary futures trader at FundedNext. I build the quantitative trading and risk
+          tools I trade with: regime models, volatility engines and backtests designed to
+          catch their own mistakes. On the side, physics
+          simulations, including a black hole rendered from first principles.
+          <span lang="ja">市場のリスクを測り、戦略を疑い、結果を正直に公開する。</span>
+        </p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-neon" href="#work"><span>Start the drive</span><span class="jp">出発</span></a>
+          <a class="btn btn-ghost" href="https://github.com/MrRoy009" target="_blank" rel="noopener"><span>GitHub ↗</span></a>
+        </div>
+      </div>
+
+      <div class="scroll-cue mono" aria-hidden="true"><span>SCROLL</span><i></i><span lang="ja">下へ</span></div>
+    </section>
+
+    <!-- LED TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track mono">
+        <span>NOW SHOWING <b>NIFTY RISK TERMINAL</b></span><span lang="ja">上映中</span>
+        <span>VALIDATION <b>0 STRATEGIES PASSED</b></span><span lang="ja">検証中</span>
+        <span>RENDERING <b>SCHWARZSCHILD r = 2M</b></span><span lang="ja">重力</span>
+        <span>REGIME <b>HMM · 3 STATES</b></span><span lang="ja">相場</span>
+        <span>NOW SHOWING <b>NIFTY RISK TERMINAL</b></span><span lang="ja">上映中</span>
+        <span>VALIDATION <b>0 STRATEGIES PASSED</b></span><span lang="ja">検証中</span>
+        <span>RENDERING <b>SCHWARZSCHILD r = 2M</b></span><span lang="ja">重力</span>
+        <span>REGIME <b>HMM · 3 STATES</b></span><span lang="ja">相場</span>
+      </div>
+    </div>
+
+    <!-- MANIFESTO: high-contrast transit sign -->
+    <section id="manifesto" class="sign">
+      <div class="sign-bar">
+        <span class="sign-code">M-02</span>
+        <span class="sign-stripe"></span>
+      </div>
+      <div class="sign-body">
+        <div class="sign-prev mono"><span>← HYPOTHESIS</span><span lang="ja">仮説</span></div>
+        <div class="sign-main">
+          <p class="sign-jp reveal" lang="ja">検証してから、信じる。</p>
+          <h2 class="reveal">I don't chase<br />backtests. I try to <span class="strike">beat</span> break them.</h2>
+          <p class="sign-copy reveal">
+            Every strategy I write has to survive pre-registered validation before it is allowed
+            to send a signal: walk-forward tests, cost and delay stress, a placebo benchmark,
+            block bootstrap, Deflated Sharpe and PBO. So far none has passed, and the repos say
+            exactly why. I think a negative result written up honestly is worth more than
+            a pretty equity curve.
+          </p>
+        </div>
+        <div class="sign-next mono"><span>EVIDENCE →</span><span lang="ja">証拠</span></div>
+      </div>
+    </section>
+
+    <!-- WORK: horizontal billboard drive -->
+    <section id="work" class="drive" style="--count:7">
+      <div class="drive-sticky">
+        <div class="drive-head">
+          <p class="mono kicker"><span class="dot c"></span>LINE 01 · SELECTED WORK · <span lang="ja">作品集</span></p>
+          <h2 class="drive-title">Billboards<span>on the boulevard</span></h2>
+          <p class="mono drive-count"><span id="bb-index">01</span> / 07</p>
+        </div>
+
+        <div class="track" id="track">
+          <!-- 01 Nifty Risk Terminal -->
+          <article class="billboard" data-hue="cyan">
+            <div class="frame">
+              <div class="screen art-terminal">
+                <svg class="chart" viewBox="0 0 400 225" preserveAspectRatio="none" aria-hidden="true">
+                  <rect x="0" y="0" width="120" height="225" class="reg bull" />
+                  <rect x="120" y="0" width="110" height="225" class="reg side" />
+                  <rect x="230" y="0" width="90" height="225" class="reg bear" />
+                  <rect x="320" y="0" width="80" height="225" class="reg bull" />
+                  <line x1="0" y1="178" x2="400" y2="178" class="var" />
+                  <polyline class="price" points="0,150 14,142 26,146 38,128 52,132 66,116 80,120 94,102 108,96 120,104 134,98 148,110 162,100 176,112 190,104 204,116 218,108 230,124 242,146 254,138 266,160 278,152 290,170 302,164 314,158 326,140 340,132 354,118 368,110 382,96 400,84" />
+                </svg>
+                <div class="term-tag mono">VaR 95% · −1.84%</div>
+                <div class="kanji" lang="ja">危</div>
+                <div class="bb-label mono">REACT · VITE · RECHARTS</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code">P-01</span>
+              <div>
+                <h3>Nifty Risk Terminal <em lang="ja">リスク端末</em></h3>
+                <p>Browser risk terminal: VaR/CVaR, EWMA &amp; GARCH(1,1), a 3-state HMM fitted with Baum–Welch, and Black–Scholes Greeks. All models written from scratch and run client-side.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/Nifty-Risk-Terminal" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 02 Signal bot -->
+          <article class="billboard" data-hue="amber">
+            <div class="frame">
+              <div class="screen art-train">
+                <div class="board mono">
+                  <div class="board-head"><span>SIGNALS</span><span lang="ja">信号</span></div>
+                  <div class="board-row"><b>US30</b><span class="flap" data-words="NO SIGNAL|VALIDATING|PBO FAIL">NO SIGNAL</span><i>0</i></div>
+                  <div class="board-row"><b>NAS100</b><span class="flap" data-words="VALIDATING|NO SIGNAL|DSR &lt; 0.95">VALIDATING</span><i>2</i></div>
+                  <div class="board-row"><b>GER40</b><span class="flap" data-words="NO SIGNAL|PLACEBO WINS|NO SIGNAL">NO SIGNAL</span><i>1</i></div>
+                </div>
+                <div class="kanji" lang="ja">信号</div>
+                <div class="bb-label mono">PYTHON · MT5 · HMM</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code a">P-02</span>
+              <div>
+                <h3>FundingNext Signal Bot <em lang="ja">信号機</em></h3>
+                <p>Read-only MetaTrader 5 bot that ranks index CFDs, detects regimes with a Gaussian HMM and checks prop-firm risk rules. No strategy has passed its validation gate yet, so it sends no signals.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/fundingnext-signal-bot" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 03 Volatility -->
+          <article class="billboard" data-hue="magenta">
+            <div class="frame">
+              <div class="screen art-kowloon">
+                <div class="sky"></div>
+                <div class="towers"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="kanji" lang="ja">変動</div>
+                <div class="bb-label mono">INDIA VIX · NIFTY 50</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code m">P-03</span>
+              <div>
+                <h3>Simple Volatility Model <em lang="ja">変動率</em></h3>
+                <p>A volatility model for the Nifty 50 built on India VIX data.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/simple-volatility-model" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 04 Black hole -->
+          <article class="billboard" data-hue="chrome">
+            <div class="frame">
+              <div class="screen art-hole">
+                <div class="stars"></div>
+                <div class="hole-arc"></div>
+                <div class="hole-shadow"></div>
+                <div class="hole-disk"></div>
+                <div class="kanji" lang="ja">重力</div>
+                <div class="bb-label mono">NUMPY · SCIPY · RAY TRACING</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code w">P-04</span>
+              <div>
+                <h3>Black Hole <em lang="ja">ブラックホール</em></h3>
+                <p>Schwarzschild ray tracer with a thin accretion disk, lensing, higher-order images, gravitational redshift and Doppler beaming. CPU only.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/black-hole" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 05 Ait-Sahalia -->
+          <article class="billboard" data-hue="cyan">
+            <div class="frame">
+              <div class="screen art-signal">
+                <div class="rings"></div>
+                <div class="kanji" lang="ja">跳躍</div>
+                <div class="bb-label mono">JUMP-DIFFUSION · VRP</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code">P-05</span>
+              <div>
+                <h3>Aït-Sahalia Nifty <em lang="ja">跳躍拡散</em></h3>
+                <p>Aït-Sahalia jump-diffusion model and a variance-risk-premium strategy. Backtested with realistic costs, it shows no edge on Nifty 2022–2026, and the write-up says so.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/ait-sahalia-nifty" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 06 Stock prediction -->
+          <article class="billboard" data-hue="magenta">
+            <div class="frame">
+              <div class="screen art-sakura">
+                <div class="horizon"></div>
+                <div class="grid"></div>
+                <div class="kata" lang="ja">長短期記憶</div>
+                <div class="kanji" lang="ja">予測</div>
+                <div class="bb-label mono">LSTM · TIME SERIES</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code m">P-06</span>
+              <div>
+                <h3>Stock Prediction App <em lang="ja">株価予測</em></h3>
+                <p>LSTM recurrent network for time-series forecasting, with client data cleaned and validated using DAX and Excel.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/Stock-Prediction-App" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 07 Sentiment -->
+          <article class="billboard" data-hue="chrome">
+            <div class="frame">
+              <div class="screen art-sentiment">
+                <div class="dots" id="sentiment-dots"></div>
+                <div class="senti-legend mono"><span class="pos">● POSITIVE</span><span class="neg">● NEGATIVE</span></div>
+                <div class="kanji" lang="ja">感情</div>
+                <div class="bb-label mono">NLP · SENTIMENT140</div>
+                <div class="scan"></div>
+              </div>
+              <i class="bolt tl"></i><i class="bolt tr"></i><i class="bolt bl"></i><i class="bolt br"></i>
+            </div>
+            <footer class="plate">
+              <span class="plate-code w">P-07</span>
+              <div>
+                <h3>Twitter Sentiment <em lang="ja">感情分析</em></h3>
+                <p>NLP classifier trained on Sentiment140 that labels tweets positive or negative and surfaces the main complaints for each airline.</p>
+                <a class="repo-link mono" href="https://github.com/MrRoy009/Twitter-Sentiment-Analysis" target="_blank" rel="noopener">VIEW REPO ↗</a>
+              </div>
+            </footer>
+          </article>
+
+          <a class="track-end mono" href="#repos">
+            <span lang="ja">続く</span>
+            <span>ALL REPOS ↓</span>
+          </a>
+        </div>
+
+        <div class="road" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <!-- ROUTE MAP: research pipeline -->
+    <section id="route" class="route">
+      <div class="route-head">
+        <p class="mono kicker"><span class="dot a"></span>LINE 03 · RESEARCH PIPELINE · <span lang="ja">研究工程</span></p>
+        <h2 class="reveal">The route,<br /><span class="outline">stop by stop.</span></h2>
+      </div>
+
+      <ol class="stations" id="stations">
+        <li class="station reveal"><i></i><b class="mono">A01</b><h3>Data</h3><em lang="ja">データ</em><p>Price feeds from Angel One SmartAPI, MetaTrader 5 and plain CSVs, cleaned with pandas.</p></li>
+        <li class="station reveal"><i></i><b class="mono">A02</b><h3>Models</h3><em lang="ja">モデル</em><p>HMM regimes, GARCH and EWMA volatility, jump-diffusion, LSTMs.</p></li>
+        <li class="station reveal"><i></i><b class="mono">A03</b><h3>Validation</h3><em lang="ja">検証</em><p>Walk-forward, placebo benchmarks, block bootstrap, Deflated Sharpe, PBO.</p></li>
+        <li class="station reveal"><i></i><b class="mono">A04</b><h3>Risk</h3><em lang="ja">リスク</em><p>VaR/CVaR, position sizing, and daily and total drawdown limits.</p></li>
+        <li class="station reveal"><i></i><b class="mono">A05</b><h3>Interfaces</h3><em lang="ja">画面</em><p>React terminals and Python CLIs that run locally, with no API keys needed.</p></li>
+        <li class="station reveal terminal"><i></i><b class="mono">A06</b><h3>Write-up</h3><em lang="ja">報告</em><p>Results published as they are, especially the negative ones.</p></li>
+      </ol>
+      <div class="route-line" aria-hidden="true"><span id="route-fill"></span></div>
+    </section>
+
+    <!-- JOURNEY: experience timetable -->
+    <section id="journey" class="journey">
+      <div class="journey-head">
+        <p class="mono kicker"><span class="dot m"></span>LINE 05 · JOURNEY · <span lang="ja">経歴</span></p>
+        <h2 class="reveal">Timetable<span class="mono">ALL STOPS · <span lang="ja">各駅停車</span></span></h2>
+      </div>
+      <ol class="timetable">
+        <li class="stop now reveal">
+          <span class="when mono">NOV 2026 — NOW</span>
+          <i></i>
+          <div>
+            <h3>Proprietary Futures Trader <em>FundedNext</em></h3>
+            <p class="where mono">FULL-TIME · REMOTE · <span lang="ja">現在</span></p>
+            <p>Trading futures and FX in a funded account under prop-firm risk rules: daily and total drawdown limits that my own tooling is built to enforce.</p>
+          </div>
+        </li>
+        <li class="stop reveal">
+          <span class="when mono">OCT 2025 — FEB 2026</span>
+          <i></i>
+          <div>
+            <h3>Export Agent <em>Self-employed</em></h3>
+            <p class="where mono">REMOTE · INDIA → BANGLADESH</p>
+            <p>Ran end-to-end export of turmeric powder across the land border: logistics, documentation, land-port and SAFTA compliance, and coordination with C&amp;F agents to cut demurrage risk.</p>
+          </div>
+        </li>
+        <li class="stop reveal">
+          <span class="when mono">JUL — NOV 2024</span>
+          <i></i>
+          <div>
+            <h3>Campus Ambassador <em>E-Cell, IIT Bombay</em></h3>
+            <p class="where mono">INTERNSHIP · REMOTE</p>
+            <p>Team leadership, account management and outreach for India's largest student entrepreneurship cell.</p>
+          </div>
+        </li>
+        <li class="stop reveal">
+          <span class="when mono">APR — MAY 2024</span>
+          <i></i>
+          <div>
+            <h3>Marketing Intern <em>BEEP</em></h3>
+            <p class="where mono">INTERNSHIP</p>
+            <p>Market-trend analysis for international business decisions. Automated reporting in VBA, cutting data-processing time by 50%, and reviewed contracts for compliance and financial exposure.</p>
+          </div>
+        </li>
+        <li class="stop origin reveal">
+          <span class="when mono">ORIGIN · <span lang="ja">始発</span></span>
+          <i></i>
+          <div>
+            <h3>NIT Agartala <em>National Institute of Technology</em></h3>
+            <p class="where mono">EDUCATION · TRIPURA, INDIA</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- STATS / STACK -->
+    <section class="stats">
+      <div class="stat reveal"><span class="num" data-count="12" id="stat-repos">0</span><span class="unit mono">PUBLIC REPOS<br /><em lang="ja">公開</em></span></div>
+      <div class="stat reveal"><span class="num" data-count="5">0</span><span class="unit mono">RISK MODELS<br />FROM SCRATCH<br /><em lang="ja">自作</em></span></div>
+      <div class="stat reveal"><span class="num" data-count="6">0</span><span class="unit mono">VALIDATION GATES<br />PER STRATEGY<br /><em lang="ja">関門</em></span></div>
+      <div class="stat reveal"><span class="num" data-count="0">0</span><span class="unit mono">STRATEGIES PASSED<br />(SO FAR)<br /><em lang="ja">合格</em></span></div>
+    </section>
+
+    <div class="clients" aria-label="Tech stack">
+      <div class="clients-track">
+        <span>Python</span><i>◆</i><span>pandas</span><i>◆</i><span>scikit-learn</span><i>◆</i><span>NumPy · SciPy</span><i>◆</i><span>React</span><i>◆</i><span>MetaTrader 5</span><i>◆</i><span>C++</span><i>◆</i><span>Node.js</span><i>◆</i><span>Linux</span><i>◆</i>
+        <span>Python</span><i>◆</i><span>pandas</span><i>◆</i><span>scikit-learn</span><i>◆</i><span>NumPy · SciPy</span><i>◆</i><span>React</span><i>◆</i><span>MetaTrader 5</span><i>◆</i><span>C++</span><i>◆</i><span>Node.js</span><i>◆</i><span>Linux</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- ALL REPOS: departure board -->
+    <section id="repos" class="repos">
+      <div class="repos-head">
+        <p class="mono kicker"><span class="dot c"></span>LINE 04 · ALL LINES · <span lang="ja">全路線</span></p>
+        <h2 class="reveal">Departures<span class="mono" id="repos-live">FROM GITHUB</span></h2>
+      </div>
+      <div class="departures mono" role="table" aria-label="Public GitHub repositories">
+        <div class="dep-row dep-head" role="row">
+          <span role="columnheader">REPO <em lang="ja">路線</em></span>
+          <span role="columnheader">LANG <em lang="ja">言語</em></span>
+          <span role="columnheader">UPDATED <em lang="ja">更新</em></span>
+          <span role="columnheader">★</span>
+        </div>
+        <div id="dep-body">
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/black-hole" target="_blank" rel="noopener"><span role="cell">black-hole</span><span role="cell">Python</span><span role="cell">2026-11-07</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/fundingnext-signal-bot" target="_blank" rel="noopener"><span role="cell">fundingnext-signal-bot</span><span role="cell">Python</span><span role="cell">2026-11-07</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/simple-volatility-model" target="_blank" rel="noopener"><span role="cell">simple-volatility-model</span><span role="cell">Jupyter</span><span role="cell">2026-11-07</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/ait-sahalia-nifty" target="_blank" rel="noopener"><span role="cell">ait-sahalia-nifty</span><span role="cell">Jupyter</span><span role="cell">2026-11-07</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/Nifty-Risk-Terminal" target="_blank" rel="noopener"><span role="cell">Nifty-Risk-Terminal</span><span role="cell">JavaScript</span><span role="cell">2026-11-02</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/New-Portfolio-Website" target="_blank" rel="noopener"><span role="cell">New-Portfolio-Website</span><span role="cell">HTML</span><span role="cell">2025-07-18</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/Stock-Prediction-App" target="_blank" rel="noopener"><span role="cell">Stock-Prediction-App</span><span role="cell">Python</span><span role="cell">2024-11-12</span><span role="cell">1</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/Twitter-Sentiment-Analysis" target="_blank" rel="noopener"><span role="cell">Twitter-Sentiment-Analysis</span><span role="cell">Jupyter</span><span role="cell">2024-11-11</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/FoodMania" target="_blank" rel="noopener"><span role="cell">FoodMania</span><span role="cell">CSS</span><span role="cell">2024-01-29</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/FoodMania-Web_Pirates" target="_blank" rel="noopener"><span role="cell">FoodMania-Web_Pirates</span><span role="cell">CSS</span><span role="cell">2024-01-25</span><span role="cell">0</span></a>
+          <a class="dep-row" role="row" href="https://github.com/MrRoy009/Portfolio-Website" target="_blank" rel="noopener"><span role="cell">Portfolio-Website</span><span role="cell">CSS</span><span role="cell">2023-12-05</span><span role="cell">0</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <p class="mono kicker"><span class="dot w"></span>END OF LINE · <span lang="ja">終点</span></p>
+      <h2 class="last-stop">
+        <span class="jp" lang="ja">終点</span>
+        <span class="en chrome-flat">Last stop.</span>
+      </h2>
+      <p class="contact-copy reveal">Want to talk about quant research, risk tooling, or a model that probably shouldn't work? Send me an email.</p>
+      <a class="mail" href="mailto:swastayan204@gmail.com">
+        <span class="mail-text">swastayan204@gmail.com</span>
+        <span class="mail-arrow">→</span>
+      </a>
+      <ul class="socials mono">
+        <li><a href="https://github.com/MrRoy009" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/swastayan-roy-80739b24b/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://twitter.com/monster5205" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="https://www.leetcode.com/fleur_lovin" target="_blank" rel="noopener">LeetCode</a></li>
+        <li><a href="https://codeforces.com/profile/_404_error_" target="_blank" rel="noopener">Codeforces</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>© 2026 SWASTAYAN ROY · <span lang="ja">全著作権所有</span></span>
+    <span>HAND-BUILT · HTML / CSS / JS · NO FRAMEWORKS</span>
+    <span>NOT INVESTMENT ADVICE · <span lang="ja">投資助言ではありません</span></span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
